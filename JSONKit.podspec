@@ -5,7 +5,14 @@ Pod::Spec.new do |s|
   s.summary  = 'A Very High Performance Objective-C JSON Library.'
   s.homepage = 'https://github.com/johnezang/JSONKit'
   s.author   = 'John Engelhart'
-  s.source   = { :git => 'https://github.com/RedMadRobot/JSONKit.git', :commit => '0aff3deb5e1bb2bbc88a83fd71c8ad5550185cce' }
+  s.source   = { :git => 'https://github.com/dvcs-appkode/JSONKit.git'}
 
-  s.source_files   = '*.{h,m}'
+  non_arc_files = 'JSONKit.m'
+  s.requires_arc = true
+  s.source_files = '*.{h,m}'
+  s.exclude_files = non_arc_files
+  s.subspec 'no-arc' do |sna|
+      sna.requires_arc = false
+      sna.source_files = non_arc_files
+  end
 end
